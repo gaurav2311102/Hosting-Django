@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'index'%}">Logo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{%url 'admin:index' %}">Admin</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'basic_app:register' %}"
+              >register</a
+            >
+          </li>
+
+          {% if user.is_authenticated %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user_logout' %}"
+              >Logout</a
+            >
+          {% else %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'basic_app:user_login' %}"
+              >Login</a
+            >  
+          </li>
+
+            {% endif %}
+
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Bootstrap JS (optional, only required if you want to use Bootstrap's JavaScript features like dropdowns, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <div class="container">{% block body_block %} {% endblock %}</div>
+  </body>
+</html>
