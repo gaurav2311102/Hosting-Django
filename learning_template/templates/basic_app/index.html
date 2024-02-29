@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+{% extends "basic_app/base.html" %}
+
+{% load custom_templates %}
+
+{% block body_block %}
+<title>Document</title>
+<h1>This is index page</h1><br><br>
+<h2>{{ text|cut:'hello'|upper }}</h2>
+<h2>{{ text|first|upper}}</h2>
+<h2>{{ number|add:"120" }}</h2>
+{% endblock %}
